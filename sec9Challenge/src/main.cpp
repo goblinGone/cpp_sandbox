@@ -1,13 +1,34 @@
 #include<iostream>
 #include<vector>
 #include"funcs.h"
+
 using namespace std;
+
+vector<int>nums {};
+
+void optA() {
+    bool done {false};
+    int additon {};
+    char again {};
+    while (!done) {
+        std::cout<<"please enter num: ";
+        std::cin>>additon;
+        nums.push_back(additon);
+        std::cout<<"again?: ";
+        std::cin>>again;
+        if (again=='n'||again=='N') {
+            done=true;
+        }
+    }
+}
+
+
 int main() {
-    vector<int>nums {};
+    
         cout <<"\n---section-9-challenge-----"<<endl;
     char choice {};
     do {
-        cout <<"P - Print numbers"<<endl;
+        cout <<"\n\nP - Print numbers"<<endl;
         cout <<"A - Add numbers"<<endl;
         cout <<"M - Display mean average of numbers"<<endl;
         cout <<"S - Display the smallest number"<<endl;
@@ -19,11 +40,22 @@ int main() {
         if (choice=='q'||choice=='Q') {
             goodbye();
         } else if (choice=='p'||choice=='P') {
-            cout<<"you have entered P"<<endl;
+            cout<<endl;
+            cout<<"Listed nums, so far are:"<<endl;
+            for (auto balls: nums)
+                cout << balls << endl;
+            cout<<endl;
         } else if (choice=='a'||choice=='A') {
-            cout<<"you have entered A"<<endl;
+            optA(); 
+               
         } else if (choice=='m'||choice=='M') {
-            cout<<"you have entered M"<<endl;
+            int avg_num {};
+            int run_sum {};
+
+            for (auto num: nums)
+                run_sum += num;
+            avg_num = run_sum / nums.size();
+            cout<<"\nThe mean average is: "<<avg_num<<endl;
         } else if (choice=='s'||choice=='S') {
             cout<<"you have entered S"<<endl;
         } else if (choice=='l'||choice=='L') {
@@ -34,6 +66,6 @@ int main() {
         }
 
     } while (choice != 'q' && choice!= 'Q');
-    cout<<endl<<endl<<endl;
+    cout<<endl;
     return 0;
 }
