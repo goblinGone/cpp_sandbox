@@ -1,5 +1,14 @@
+/*
+the section 9 challenge from Udemy
+create a meneu tool, that takes nubers, adds them to a vector, then has options to print list, display the mean avg, smallest and largest nums
+
+*/
+
+
+
 #include<iostream>
 #include<vector>
+#include <algorithm> 
 #include"funcs.h"
 
 using namespace std;
@@ -13,6 +22,7 @@ void optA() {
     while (!done) {
         std::cout<<"please enter num: ";
         std::cin>>additon;
+        cout<<additon<<" added"<<endl;
         nums.push_back(additon);
         std::cout<<"again?: ";
         std::cin>>again;
@@ -40,27 +50,48 @@ int main() {
         if (choice=='q'||choice=='Q') {
             goodbye();
         } else if (choice=='p'||choice=='P') {
-            cout<<endl;
-            cout<<"Listed nums, so far are:"<<endl;
-            for (auto balls: nums)
-                cout << balls << endl;
-            cout<<endl;
+            if (nums.size()== 0) {
+                cout<<"[ ] Empty list, try again!"<<endl;
+            } else {
+                cout<<endl;
+                cout<<"Listed nums, so far are:"<<endl;
+                for (auto balls: nums)
+                    cout << balls << endl;
+                cout<<endl;
+            }
+
         } else if (choice=='a'||choice=='A') {
             optA(); 
                
         } else if (choice=='m'||choice=='M') {
-            int avg_num {};
-            int run_sum {};
+            if (nums.size()== 0) {
+                cout<<"[ ] Empty list, try again!"<<endl;
+            } else {
+                int avg_num {};
+                int run_sum {};
 
-            for (auto num: nums)
-                run_sum += num;
-            avg_num = run_sum / nums.size();
-            cout<<"\nThe mean average is: "<<avg_num<<endl;
+                for (auto num: nums)
+                   run_sum += num;
+                avg_num = run_sum / nums.size();
+                cout<<"\nThe mean average is: "<<avg_num<<endl;
+            }
         } else if (choice=='s'||choice=='S') {
-            cout<<"you have entered S"<<endl;
+            if (nums.size()== 0) {
+                cout<<"[ ] Empty list, try again!"<<endl;
+                } else {
+
+                    int min = *std::min_element(nums.begin(), nums.end());
+                    cout << "minimum/smallest element is: " << min << endl;      
+                }  
         } else if (choice=='l'||choice=='L') {
-            cout<<"you have entered L"<<endl;
-        
+            if (nums.size()== 0) {
+                cout<<"[ ] Empty list, try again!"<<endl;
+                } else {
+
+
+                    int max = *std::max_element(nums.begin(), nums.end());
+                    cout << "the largest number is: " << max << endl;     
+                }   
         } else {
             cout<<"enter correct value"<<endl;
         }
