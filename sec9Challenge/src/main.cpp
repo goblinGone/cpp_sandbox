@@ -31,27 +31,18 @@ void optA() {
         }
     }
 }
-
-
 int main() {
-    
         cout <<"\n---section-9-challenge-----"<<endl;
     char choice {};
     do {
-        cout <<"\n\nP - Print numbers"<<endl;
-        cout <<"A - Add numbers"<<endl;
-        cout <<"M - Display mean average of numbers"<<endl;
-        cout <<"S - Display the smallest number"<<endl;
-        cout <<"L - Display the largest number"<<endl;
-        cout <<"Q- Quit"<<endl;
-        cout<<"Select an option: ";
+        startChat();
         cin >>choice;
 
         if (choice=='q'||choice=='Q') {
             goodbye();
         } else if (choice=='p'||choice=='P') {
             if (nums.size()== 0) {
-                cout<<"[ ] Empty list, try again!"<<endl;
+                empty();
             } else {
                 cout<<endl;
                 cout<<"Listed nums, so far are:"<<endl;
@@ -59,13 +50,11 @@ int main() {
                     cout << balls << endl;
                 cout<<endl;
             }
-
         } else if (choice=='a'||choice=='A') {
             optA(); 
-               
         } else if (choice=='m'||choice=='M') {
             if (nums.size()== 0) {
-                cout<<"[ ] Empty list, try again!"<<endl;
+                empty();
             } else {
                 int avg_num {};
                 int run_sum {};
@@ -77,18 +66,15 @@ int main() {
             }
         } else if (choice=='s'||choice=='S') {
             if (nums.size()== 0) {
-                cout<<"[ ] Empty list, try again!"<<endl;
+                empty();
                 } else {
-
                     int min = *std::min_element(nums.begin(), nums.end());
                     cout << "minimum/smallest element is: " << min << endl;      
                 }  
         } else if (choice=='l'||choice=='L') {
             if (nums.size()== 0) {
-                cout<<"[ ] Empty list, try again!"<<endl;
+                empty();
                 } else {
-
-
                     int max = *std::max_element(nums.begin(), nums.end());
                     cout << "the largest number is: " << max << endl;     
                 }   
